@@ -81,10 +81,16 @@ class App extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Anderson</td>
-                    <td>gaitolini@gmail.com</td>
-                  </tr>
+                  {
+                    this.state.lista.map(function (autor) {
+                      return (
+                        <tr key={autor.id}>
+                          <td>{autor.nome}</td>
+                          <td>{autor.email}</td>
+                        </tr>
+                      );
+                    })
+                  }
                 </tbody>
               </table>
             </div>
