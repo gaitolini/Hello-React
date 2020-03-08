@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import './css/pure-min.css';
 import './css/side-menu.css';
+import $ from 'jquery';
+
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = { lista: [] };
+  }
+
+  componentDidMount() {
+    console.log("didMount");
+    $.ajax({
+      url: "https://cdc-react.herokuapp.com/api/autores",
+      dataType: 'json',
+      success: function (resposta) {
+        console.log("chegou a resposta");
+        this.setState({ lista: resposta });
+      }.bind(this)
+    }
+    );
+  }
   render() {
     return (
       <div id="layout">
